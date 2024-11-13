@@ -40,3 +40,66 @@ du tableau (c'est comme cela qu'on calcule une moyenne).
 
 BONNE CHANCE 😀
 */
+
+const john = {
+    factures: [124, 48, 268, 180, 42],
+    calculerPourboire: function() {
+        this.pourboires = [];
+        this.paiementsTotaux = [];
+        for (let i = 0; i < this.factures.length; i++) {
+            let pourboire;
+            if (this.factures[i] < 50) {
+                pourboire = this.factures[i] * 0.20;
+            } else if (this.factures[i] >= 50 && this.factures[i] <= 200) {
+                pourboire = this.factures[i] * 0.15;
+            } else {
+                pourboire = this.factures[i] * 0.10;
+            }
+            this.pourboires.push(pourboire);
+            this.paiementsTotaux.push(this.factures[i] + pourboire);
+        }
+    }
+};
+
+john.calculerPourboire();
+
+const mark = {
+    factures: [77, 375, 110, 45],
+    calculerPourboire: function() {
+        this.pourboires = [];
+        this.paiementsTotaux = [];
+        for (let i = 0; i < this.factures.length; i++) {
+            let pourboire;
+            if (this.factures[i] < 100) {
+                pourboire = this.factures[i] * 0.20;
+            } else if (this.factures[i] >= 100 && this.factures[i] <= 300) {
+                pourboire = this.factures[i] * 0.10;
+            } else {
+                pourboire = this.factures[i] * 0.25;
+            }
+            this.pourboires.push(pourboire);
+            this.paiementsTotaux.push(this.factures[i] + pourboire);
+        }
+    }
+};
+
+mark.calculerPourboire();
+
+function calculerMoyenne(pourboires) {
+    let somme = 0;
+    for (let i = 0; i < pourboires.length; i++) {
+        somme += pourboires[i];
+    }
+    return somme / pourboires.length;
+}
+
+const moyenneJohn = calculerMoyenne(john.pourboires);
+const moyenneMark = calculerMoyenne(mark.pourboires);
+
+if (moyenneJohn > moyenneMark) {
+    console.log(`John a payé le pourboire moyen le plus élevé: ${moyenneJohn}`);
+} else if (moyenneMark > moyenneJohn) {
+    console.log(`Mark a payé le pourboire moyen le plus élevé: ${moyenneMark}`);
+} else {
+    console.log(`Ex æquo: John et Mark ont payé le même pourboire moyen.`);
+}
