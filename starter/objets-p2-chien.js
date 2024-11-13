@@ -10,18 +10,18 @@ OBJETS - PRÉPA 2 : Modélisation d'un chien
    (où … est le nom du chien et … utilise la méthode aboyer du chien pour le faire aboyer)
 */
 
-const chien = {
+const chien ={
     nom: "Tobby",
     race: "Border Collie",
-    couleur: "Bleu merle tricolore"
+    couleur: "bleu merle tricolore",
 
-    grogner: function() {
-        return "Grrr ! Grrr!";
-    };
-
-    aboyer: function() {
-        return "Wah ! Wah !";
+    grogner(){
+        return 'Grr ! GRR !'
+    },
+    aboyer(){
+        return 'Wah ! WAH !'
     }
-};
+}
 
-console.log(`$`)
+console.log(`${chien.nom} est un ${chien.race} de couleur ${chien.couleur}`);
+console.log(` Tiens, un chat! ${chien.nom} aboie : ${chien.aboyer()}`)
